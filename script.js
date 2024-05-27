@@ -1,5 +1,10 @@
 let playerChoices = document.querySelectorAll('.player .choice');
-let computerChoices = document.querySelectorAll('.computer .choice')
+let computerChoices = document.querySelectorAll('.computer .choice');
+let playerScoreValue = document.querySelector('.playerScore');
+let computerScoreValue = document.querySelector('.computerScore');
+let result = document.getElementById('result')
+
+
 
 let playerScore = 0;
 let computerScore = 0;
@@ -16,7 +21,7 @@ class GameArena {
     let player = this.player;
     let computer = this.computer;
 
-    console.log(`player (${player}) &`, `computer (${computer})`);
+    // console.log(`player (${player}) &`, `computer (${computer})`);
 
     if(player === computer){
         return 'DRAW';
@@ -28,7 +33,7 @@ class GameArena {
       {
         return 'PLAYER WIN!';
     } else {
-        return 'COMPUTER WIN';
+        return 'COMP WIN';
     }
   }
 }
@@ -88,22 +93,28 @@ playerChoices.forEach(playerChoice => {
     let selectChoice = new PlayGame(playerSelect, computerChoice());
     let playNow = selectChoice.isWin();
 
-    console.log(playNow);
+    // console.log(playNow);
 
     // scoring
     if(playNow === 'PLAYER WIN!') {
       playerScore += 1;
-    } else if (playNow === 'COMPUTER WIN') {
+      playerScoreValue.innerHTML = `Player(${playerScore})`
+    } else if (playNow === 'COMP WIN') {
       computerScore += 1;
+      computerScoreValue.innerHTML = `Computer(${computerScore})`
     } else if (playNow === 'DRAW') {
       drawScore += 1;
     }
 
+    // banner score
+    result.innerHTML = playNow;
+    result.classList.add('result');
+
     
 
-    console.log(`player score = ${playerScore} `);
-    console.log(`computer score = ${computerScore} `);
-    console.log(`draw score = ${drawScore} `);
+    // console.log(`player score = ${playerScore} `);
+    // console.log(`computer score = ${computerScore} `);
+    // console.log(`draw score = ${drawScore} `);
 
     
   })
