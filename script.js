@@ -98,10 +98,10 @@ playerChoices.forEach(playerChoice => {
     // scoring
     if(playNow === 'PLAYER WIN!') {
       playerScore += 1;
-      playerScoreValue.innerHTML = `Player(${playerScore})`
+      playerScoreValue.innerHTML = `Player(<span style="color: #0066cc">${playerScore}</span>)`
     } else if (playNow === 'COMP WIN') {
       computerScore += 1;
-      computerScoreValue.innerHTML = `Computer(${computerScore})`
+      computerScoreValue.innerHTML = `Computer(<span style="color: #FF0000">${computerScore}</span>)`
     } else if (playNow === 'DRAW') {
       drawScore += 1;
     }
